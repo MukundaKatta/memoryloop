@@ -4,29 +4,40 @@
 
 Restore grainy family photos in one tap. Turn them into short videos you actually want to share.
 
-## What it does
+## Stack
 
-- **One-tap restore** — AI cleans up scratches, colors, and blur. No Photoshop skills needed.
-- **Photo to video** — Turn a still image into a living, moving memory in seconds.
-- **Made for families** — Shared albums, group timelines, and easy gifting on any birthday.
+- **Next.js 15.3.1** · App Router · TypeScript strict
+- **Tailwind v4** (`@tailwindcss/postcss`, CSS-first, no config file)
+- `next/font/google` for Inter
+- `pnpm` package manager
 
-## Why
+## Run locally
 
-Consumer AI. Part of a 20-product exploration of high-demand consumer and SMB markets.
+```bash
+pnpm install
+pnpm dev
+```
+
+Open [http://localhost:3000](http://localhost:3000).
+
+## Routes
+
+| Route | Description |
+|---|---|
+| `/` | Landing page — hero, demo widget, features, waitlist form |
+| `/try` | Upload a grainy photo → mocked CSS restore → before/after slider |
+| `/api/waitlist` | POST `{ email }` → forwards to waitlist-api-sigma with `product: "memoryloop"` |
+
+## Deploy
+
+Zero config on Vercel — Next.js is auto-detected. No environment variables required.
+
+```bash
+pnpm build   # verify clean build locally
+```
 
 ## Status
 
-Landing page live. Product in planning.
+v0 skeleton — landing preserved, `/try` demo wired with CSS mock filters (no real AI call yet).
 
-- **Live**: https://mukundakatta.github.io/memoryloop/
-
-## Stack (when built)
-
-- Next.js 16 (App Router)
-- Supabase for auth + data
-- Stripe for payments
-- Deployed on Vercel
-
-## Local preview
-
-Just open `index.html` in a browser — it is a static landing page with the Tailwind CDN.
+- **Live**: https://memoryloop.vercel.app
